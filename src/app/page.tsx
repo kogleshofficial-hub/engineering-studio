@@ -1,0 +1,164 @@
+const telemetry = [
+  ["BUILD", "PASS", "operational"],
+  ["DEPLOY", "READY", "operational"],
+  ["DATA", "LIVE", "info"],
+  ["FAULTS", "00", "operational"],
+];
+
+const labs = [
+  { id: "LAB-001", title: "CONNECTED SENSOR FABRIC", tag: "IOT × CLOUD", metric: "42ms", label: "PIPELINE LATENCY" },
+  { id: "LAB-002", title: "EDGE VISION NODE", tag: "CV × AI", metric: "31.2", label: "INFERENCE FPS" },
+  { id: "LAB-003", title: "AUTONOMOUS DATA SURFACE", tag: "WEB × TELEMETRY", metric: "99.9%", label: "TARGET AVAILABILITY" },
+];
+
+const stack = [
+  ["PHYSICAL", "ESP32 / ARDUINO", "SENSORS", "CIRCUITS"],
+  ["EDGE", "PYTHON", "OPENCV", "TENSORFLOW"],
+  ["INTERFACE", "NEXT.JS", "TYPESCRIPT", "REACT"],
+  ["DATA", "SUPABASE", "POSTGRESQL", "REALTIME"],
+  ["DEPLOY", "VERCEL", "CI/CD", "OBSERVABILITY"],
+];
+
+function Frame({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return <section className={`border border-grid bg-surface ${className}`}>{children}</section>;
+}
+
+function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
+  return (
+    <div className="mb-6 flex items-center gap-4 text-[10px] font-semibold tracking-[0.28em] text-text-muted">
+      <span className="text-hazard">{index}</span><span className="h-px w-8 bg-grid" />{children}
+    </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <main className="min-h-screen bg-void text-text selection:bg-hazard selection:text-void">
+      <header className="sticky top-0 z-20 border-b border-grid bg-void/95 backdrop-blur">
+        <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-4 lg:px-8">
+          <a href="#top" className="text-xs font-bold tracking-[0.3em] text-text">ENGINEERING<span className="text-hazard">//</span>STUDIO</a>
+          <nav className="hidden gap-7 text-[10px] tracking-[0.2em] text-text-muted md:flex">
+            <a href="#labs" className="hover:text-hazard">LABS</a>
+            <a href="#systems" className="hover:text-hazard">SYSTEMS</a>
+            <a href="#architecture" className="hover:text-hazard">ARCHITECTURE</a>
+            <a href="#team" className="hover:text-hazard">UNIT</a>
+          </nav>
+          <div className="flex items-center gap-2 text-[10px] tracking-widest">
+            <span className="h-2 w-2 bg-operational" aria-hidden="true" /> OPERATIONAL
+          </div>
+        </div>
+      </header>
+
+      <div id="top" className="engineering-grid">
+        <div className="mx-auto max-w-[1600px] px-5 lg:px-8">
+          <section className="grid min-h-[calc(100vh-65px)] items-end border-x border-grid lg:grid-cols-[1.35fr_.65fr]">
+            <div className="border-t border-grid px-5 pb-16 pt-24 lg:px-12 lg:pb-24">
+              <div className="mb-8 flex items-center gap-3 text-[10px] tracking-[0.3em] text-text-muted">
+                <span className="bg-hazard px-2 py-1 font-bold text-void">SYS-000</span>
+                AUTONOMOUS ENGINEERING UNIT
+              </div>
+              <h1 className="max-w-5xl font-display text-[clamp(3.4rem,8vw,8.8rem)] font-black uppercase leading-[0.82] tracking-[-0.055em]">
+                Hardware<br /><span className="text-hazard">×</span> Software<br />As One System.
+              </h1>
+              <p className="mt-10 max-w-2xl border-l-2 border-hazard pl-5 text-sm leading-7 text-text-muted lg:text-base">
+                We engineer connected systems across physical devices, edge intelligence, data infrastructure and production interfaces.
+              </p>
+            </div>
+            <div className="grid border-t border-grid lg:min-h-[420px] lg:grid-rows-[1fr_auto]">
+              <div className="engineering-grid-dense relative flex items-end p-6 lg:p-10">
+                <div className="absolute left-6 top-6 text-[9px] tracking-[0.25em] text-text-dim">LIVE CONTROL SURFACE / REV 01</div>
+                <div className="w-full border border-grid bg-void/80 p-5">
+                  <div className="mb-5 flex justify-between text-[9px] tracking-widest text-text-muted"><span>SYSTEM STATUS</span><span className="text-operational">OPERATIONAL</span></div>
+                  <div className="h-1 bg-grid"><div className="h-full w-[87%] bg-operational" /></div>
+                  <div className="mt-3 flex justify-between text-[9px] text-text-dim"><span>CORE SERVICES</span><span>87%</span></div>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 border-t border-grid">
+                <div className="p-5"><div className="text-[9px] tracking-widest text-text-dim">UNIT</div><div className="mt-2 text-xs">KOGLESH + YENNA</div></div>
+                <div className="border-l border-grid p-5"><div className="text-[9px] tracking-widest text-text-dim">BASE</div><div className="mt-2 text-xs">MALAYSIA / MY</div></div>
+              </div>
+            </div>
+          </section>
+
+          <section className="border-x border-t border-grid">
+            <div className="grid grid-cols-2 md:grid-cols-4">
+              {telemetry.map(([name, value, state]) => (
+                <div key={name} className="border-b border-grid p-5 md:border-r last:md:border-r-0">
+                  <div className="text-[9px] tracking-[0.25em] text-text-dim">{name}</div>
+                  <div className={`mt-2 text-lg font-bold ${state === "operational" ? "text-operational" : "text-info"}`}>{value}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-[1600px] px-5 lg:px-8">
+        <section id="labs" className="border-x border-grid px-5 py-20 lg:px-12 lg:py-28">
+          <SectionLabel index="01">INTEGRATED LABS</SectionLabel>
+          <div className="mb-12 grid gap-6 lg:grid-cols-[1fr_2fr]">
+            <h2 className="font-display text-4xl font-black uppercase leading-none tracking-tight lg:text-6xl">Physical<br /><span className="text-hazard">Meets</span><br />Digital.</h2>
+            <p className="max-w-2xl text-sm leading-7 text-text-muted">Joint systems pair edge hardware and local intelligence with reliable cloud pipelines and live interfaces. Every case study is designed to expose the actual system, not hide it behind marketing language.</p>
+          </div>
+          <div className="grid gap-px border border-grid bg-grid lg:grid-cols-3">
+            {labs.map((lab) => (
+              <Frame key={lab.id} className="group bg-surface p-5 transition-colors hover:bg-surface-2">
+                <div className="flex justify-between text-[9px] tracking-[0.22em] text-text-dim"><span>{lab.id}</span><span className="text-hazard">{lab.tag}</span></div>
+                <div className="engineering-grid-dense my-7 flex aspect-[4/3] items-center justify-center border border-grid">
+                  <div className="text-center text-[9px] tracking-[0.2em] text-text-dim">SCHEMATIC / CAD<br /><span className="text-text-muted">DATA PLACEHOLDER</span></div>
+                </div>
+                <h3 className="font-display text-xl font-bold uppercase">{lab.title}</h3>
+                <div className="mt-7 border-t border-grid pt-4"><div className="text-3xl font-bold text-hazard">{lab.metric}</div><div className="mt-1 text-[9px] tracking-[0.2em] text-text-dim">{lab.label}</div></div>
+              </Frame>
+            ))}
+          </div>
+        </section>
+
+        <section id="systems" className="border-x border-t border-grid px-5 py-20 lg:px-12 lg:py-28">
+          <SectionLabel index="02">SPECIALIZED SYSTEMS</SectionLabel>
+          <div className="grid border border-grid lg:grid-cols-2">
+            <div className="p-6 lg:p-10">
+              <div className="mb-8 text-[9px] tracking-[0.25em] text-hazard">SOFTWARE / KOGLESH</div>
+              <h2 className="font-display text-4xl font-black uppercase leading-none">Production<br />Interfaces.</h2>
+              <p className="mt-6 text-sm leading-7 text-text-muted">Full-stack systems engineered around real workflows, typed data contracts, production deployments and interfaces that surface operational state.</p>
+              <div className="mt-8 grid grid-cols-2 gap-px border border-grid bg-grid text-[10px]">{["NEXT.JS", "TYPESCRIPT", "SUPABASE", "POSTGRESQL", "VERCEL", "REALTIME"].map(x => <div key={x} className="bg-surface p-4 tracking-wider">{x}</div>)}</div>
+            </div>
+            <div className="border-t border-grid p-6 lg:border-l lg:border-t-0 lg:p-10">
+              <div className="mb-8 text-[9px] tracking-[0.25em] text-hazard">HARDWARE / YENNA</div>
+              <h2 className="font-display text-4xl font-black uppercase leading-none">Edge<br />Intelligence.</h2>
+              <p className="mt-6 text-sm leading-7 text-text-muted">Embedded systems, computer vision, local inference and physical prototypes built to operate outside the browser and under real-world constraints.</p>
+              <div className="mt-8 grid grid-cols-2 gap-px border border-grid bg-grid text-[10px]">{["ESP32", "PYTHON", "OPENCV", "TENSORFLOW", "SENSORS", "FIRMWARE"].map(x => <div key={x} className="bg-surface p-4 tracking-wider">{x}</div>)}</div>
+            </div>
+          </div>
+        </section>
+
+        <section id="architecture" className="border-x border-t border-grid px-5 py-20 lg:px-12 lg:py-28">
+          <SectionLabel index="03">LAB ARCHITECTURE</SectionLabel>
+          <h2 className="max-w-4xl font-display text-4xl font-black uppercase leading-none lg:text-7xl">One stack.<br /><span className="text-hazard">Multiple layers.</span></h2>
+          <div className="mt-12 overflow-x-auto border border-grid">
+            <div className="min-w-[760px]">
+              {stack.map(([layer, a, b, c], i) => (
+                <div key={layer} className="grid grid-cols-[180px_1fr_1fr_1fr] border-b border-grid last:border-b-0">
+                  <div className="bg-surface-2 p-5 text-[10px] font-bold tracking-[0.2em] text-hazard">0{i + 1} / {layer}</div>
+                  <div className="border-l border-grid p-5 text-xs">{a}</div><div className="border-l border-grid p-5 text-xs">{b}</div><div className="border-l border-grid p-5 text-xs">{c}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="team" className="border-x border-t border-grid px-5 py-20 lg:px-12 lg:py-28">
+          <SectionLabel index="04">ENGINEERING UNIT</SectionLabel>
+          <div className="grid gap-px border border-grid bg-grid lg:grid-cols-2">
+            <div className="bg-surface p-7 lg:p-10"><div className="text-[9px] tracking-[0.25em] text-hazard">UNIT / 01</div><h3 className="mt-5 font-display text-4xl font-black uppercase">Koglesh R.<br />Murugan</h3><p className="mt-5 text-sm leading-7 text-text-muted">Full-stack software engineering — Next.js, TypeScript, Supabase, PostgreSQL and Vercel.</p></div>
+            <div className="bg-surface p-7 lg:p-10"><div className="text-[9px] tracking-[0.25em] text-hazard">UNIT / 02</div><h3 className="mt-5 font-display text-4xl font-black uppercase">Yennamutan<br />Muthukumaran</h3><p className="mt-5 text-sm leading-7 text-text-muted">Hardware, IoT and AI engineering — embedded systems, computer vision, Python and edge intelligence.</p></div>
+          </div>
+        </section>
+
+        <footer className="border-x border-t border-grid px-5 py-8 lg:px-12">
+          <div className="flex flex-col justify-between gap-5 text-[9px] tracking-[0.2em] text-text-dim md:flex-row"><span>ENGINEERING//STUDIO · REV 01</span><span>© 2026 KOGLESH R. MURUGAN + YENNAMUTAN MUTHUKUMARAN</span><span>STATUS: OPERATIONAL</span></div>
+        </footer>
+      </div>
+    </main>
+  );
+}
