@@ -27,8 +27,9 @@
 
 :root { color-scheme: dark; }
 html { background: #0b0b0c; scroll-behavior: smooth; }
-body { margin: 0; background: #0b0b0c; color: #e7e9ea; font-family: var(--font-mono); }
+body { margin: 0; min-width: 320px; background: #0b0b0c; color: #e7e9ea; font-family: var(--font-mono); text-rendering: optimizeLegibility; }
 ::selection { background: #f4d03f; color: #0b0b0c; }
+:focus-visible { outline: 2px solid #f4d03f; outline-offset: 3px; }
 
 .engineering-grid {
   background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
@@ -49,7 +50,12 @@ body { margin: 0; background: #0b0b0c; color: #e7e9ea; font-family: var(--font-m
 .registration-mark::before { left: 50%; top: -8px; bottom: -8px; width: 1px; background: #292c30; }
 .registration-mark::after { top: 50%; left: -8px; right: -8px; height: 1px; background: #292c30; }
 
-::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: #0b0b0c; }
 ::-webkit-scrollbar-thumb { background: #292c30; }
 ::-webkit-scrollbar-thumb:hover { background: #3a3e43; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+}
