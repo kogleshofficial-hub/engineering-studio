@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #0b0b0c;
+  --color-surface: #111214;
+  --color-surface-2: #17191c;
+  --color-surface-3: #1d2024;
+  --color-grid: #292c30;
+  --color-grid-bright: #3a3e43;
+  --color-text: #e7e9ea;
+  --color-text-muted: #8a8f94;
+  --color-text-dim: #5d6268;
+  --color-hazard: #f4d03f;
+  --color-safety-orange: #ff6b00;
+  --color-emergency: #ff3b30;
+  --color-operational: #39ff88;
+  --color-info: #58a6ff;
+  --font-mono: "IBM Plex Mono", "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --font-display: "Arial Narrow", "Roboto Condensed", Arial, sans-serif;
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-26: 6.5rem;
+  --spacing-30: 7.5rem;
+  --radius-none: 0px;
+  --breakpoint-3xl: 120rem;
+}
+
+:root { color-scheme: dark; }
+html { background: #0b0b0c; scroll-behavior: smooth; }
+body { margin: 0; background: #0b0b0c; color: #e7e9ea; font-family: var(--font-mono); }
+::selection { background: #f4d03f; color: #0b0b0c; }
+
+.engineering-grid {
+  background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.engineering-grid-dense {
+  background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.scanline { position: relative; overflow: hidden; }
+.scanline::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgba(255,255,255,.018) 4px); }
+.industrial-panel { border: 1px solid #292c30; background: #111214; border-radius: 0; }
+
+.registration-mark { position: relative; }
+.registration-mark::before, .registration-mark::after { content: ""; position: absolute; pointer-events: none; }
+.registration-mark::before { left: 50%; top: -8px; bottom: -8px; width: 1px; background: #292c30; }
+.registration-mark::after { top: 50%; left: -8px; right: -8px; height: 1px; background: #292c30; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0b0b0c; }
+::-webkit-scrollbar-thumb { background: #292c30; }
+::-webkit-scrollbar-thumb:hover { background: #3a3e43; }
